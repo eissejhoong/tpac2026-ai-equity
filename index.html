@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI &amp; Equity · TPAC 2026</title>
+<meta name="description" content="A 5-minute talk on AI and equity for the W3C TPAC 2026 AI &amp; Society mini-workshop, on behalf of the W3C Equity Community Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&family=Public+Sans:wght@400..800&display=swap">
+<style>
+:root{
+  --ink:#1C1A2E; --paper:#F5F0E8; --card:#FCFAF6; --body:#3A3648; --muted:#4A4658;
+  --blue:#1F4380; --rust:#82300F; --coral:#F4A582; --lilac:#D8D3E8; --lilac2:#B9B3CC;
+  --peach:#F29E7A; --rule:#DDD5C8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#0E0D17;color:var(--paper);font-family:'Public Sans',Arial,sans-serif;overflow:hidden}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--paper);color:var(--ink);padding:8px 12px;border-radius:6px;z-index:10;font-weight:700}
+.skip:focus{left:8px}
+#viewport{position:fixed;inset:0;display:grid;place-items:center}
+#stage{width:1920px;height:1080px;position:relative;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;padding:128px;display:none;flex-direction:column;overflow:hidden}
+.slide.is-current{display:flex}
+.light{background:var(--paper);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+.peach{background:var(--peach);color:var(--ink)}
+.oswald{font-family:Oswald,Arial,sans-serif}
+.eyebrow{font-size:32px;font-weight:800;letter-spacing:4px;text-transform:uppercase;display:flex;align-items:center;gap:16px}
+.eyebrow svg{width:44px;height:44px;flex:none}
+.foot{position:absolute;left:128px;right:128px;bottom:56px;font-size:24px;line-height:1.4;color:var(--muted)}
+a{color:inherit;text-decoration:underline;text-underline-offset:4px}
+a:focus-visible,button:focus-visible{outline:4px solid var(--blue);outline-offset:4px;border-radius:4px}
+.dark a:focus-visible,.dark button:focus-visible{outline-color:var(--coral)}
+/* cover */
+#s1 .circle{position:absolute;border-radius:50%;width:480px;height:480px}
+#s1 .c1{left:1180px;top:200px;background:#F08A5D;opacity:.9}
+#s1 .c2{left:1380px;top:360px;background:#5B8BD6;opacity:.85;mix-blend-mode:screen}
+#s1 h1{font-size:200px;font-weight:600;line-height:1;text-transform:uppercase}
+/* shared */
+.center{justify-content:center;gap:48px}
+.big{font-size:140px;font-weight:600;line-height:1.05;text-transform:uppercase}
+.lede{font-size:48px;line-height:1.35;max-width:1500px}
+table{border-collapse:collapse;width:100%;font-size:28px;background:var(--card);color:var(--ink)}
+th,td{text-align:left;padding:18px 22px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.35}
+th{background:var(--ink);color:var(--paper);font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:var(--card);padding:36px;border-left:10px solid var(--blue);border-radius:16px;display:flex;flex-direction:column;gap:12px}
+.card h3{font-family:Oswald,Arial,sans-serif;font-size:44px;font-weight:600;line-height:1.1;display:flex;align-items:center;gap:16px}
+.card h3 svg{width:40px;height:40px;flex:none;color:var(--blue)}
+.card p{font-size:28px;line-height:1.4;color:var(--body)}
+.flow{display:flex;align-items:center;gap:24px}
+.box{flex:1;padding:40px;border-radius:16px;display:flex;flex-direction:column;gap:16px}
+.box .t{font-family:Oswald,Arial,sans-serif;font-size:52px;font-weight:600;line-height:1.1}
+.box .d{font-size:28px;line-height:1.35}
+.arrow{width:96px;height:48px;flex:none;color:var(--rust)}
+/* audio button */
+.play{position:absolute;right:128px;top:120px;display:flex;align-items:center;gap:24px;background:#2A2742;color:var(--paper);border:3px solid var(--coral);border-radius:24px;padding:20px 36px 20px 24px;font:inherit;cursor:pointer;text-align:left}
+.play .dot{width:96px;height:96px;border-radius:50%;background:var(--coral);display:grid;place-items:center;flex:none}
+.play .dot svg{width:44px;height:44px;color:var(--ink)}
+.play .l1{display:block;font-size:36px;font-weight:800}
+.play .l2{display:block;font-size:24px;color:var(--lilac)}
+.play:hover{background:#353150}
+/* join */
+.qr{background:var(--paper);color:var(--ink);border-radius:24px;padding:32px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:none}
+.qr img{width:360px;height:360px}
+.qr p{font-size:28px;font-weight:700}
+/* controls + notes */
+#bar{transition:opacity .3s}
+#bar.idle:not(:focus-within){opacity:0;pointer-events:none}
+#bar{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:rgba(14,13,23,.92);color:var(--paper);padding:8px 10px;border-radius:999px;font-size:16px;z-index:5}
+#bar button{background:transparent;color:var(--paper);border:1px solid #5A5670;border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer;min-width:44px;min-height:44px}
+#bar button:hover{background:#2A2742}
+#bar button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+#count{min-width:72px;text-align:center;font-variant-numeric:tabular-nums}
+#notes{position:fixed;left:16px;right:16px;bottom:76px;max-height:38vh;overflow:auto;background:var(--paper);color:var(--ink);border-radius:12px;padding:20px 24px;font-size:20px;line-height:1.5;box-shadow:0 8px 30px rgba(0,0,0,.5);z-index:6}
+#notes[hidden]{display:none}
+#notes h2{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.notes-src{display:none}
+@media (prefers-reduced-motion: no-preference){.slide.is-current{animation:fade .35s ease}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media print{
+  body{overflow:visible;background:#fff}
+  #viewport{position:static;display:block}
+  #stage{transform:none!important;width:auto;height:auto}
+  .slide{display:flex!important;position:relative;width:1920px;height:1080px;page-break-after:always;zoom:.5}
+  #bar,#notes,.skip{display:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#stage">Skip to slides</a>
+<main id="viewport">
+<div id="stage" role="region" aria-roledescription="slide deck" aria-label="AI and Equity, TPAC 2026">
+
+<!-- 1 Cover -->
+<section class="slide dark" id="s1" aria-roledescription="slide" aria-label="Slide 1 of 8: AI and Equity">
+  <div class="circle c1" aria-hidden="true"></div><div class="circle c2" aria-hidden="true"></div>
+  <p class="eyebrow" style="font-size:28px;color:var(--coral)">TPAC 2026 · AI &amp; Society mini-workshop</p>
+  <div style="position:absolute;left:128px;top:316px;width:1000px;display:flex;flex-direction:column;gap:32px">
+    <h1 class="oswald">AI &amp; Equity</h1>
+    <p style="font-size:48px;line-height:1.3;color:var(--lilac)">Who gets the upside, and who pays the price?</p>
+  </div>
+  <div style="position:absolute;left:128px;top:821px;display:flex;flex-direction:column;gap:8px">
+    <p style="font-size:32px;font-weight:700">Jessie Hoong</p>
+    <p style="font-size:28px;color:var(--lilac2)">GovTech Singapore · On behalf of the W3C Equity Community Group</p>
+  </div>
+  <div class="notes-src">~15 sec. Hi everyone, I’m Jessie. I’m here on behalf of the W3C Equity Community Group. By day, I work on accessibility at GovTech, Singapore’s government technology agency. Let me start with a story.</div>
+</section>
+
+<!-- 2 Morning -->
+<section class="slide light center" id="s2" aria-roledescription="slide" aria-label="Slide 2 of 8: Meet Maria" style="padding-bottom:160px">
+  <p class="eyebrow" style="color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8:00 AM</p>
+  <h2 class="oswald big">Meet Maria.</h2>
+  <p class="lede" style="color:var(--body)">She’s blind. She points her phone at her medicine box, and AI reads the label out loud.</p>
+  <p class="oswald" style="font-size:72px;font-weight:600;line-height:1.1;color:var(--blue)">For her, AI means independence.</p>
+  <p class="foot">Maria is a composite character · Apps that do this today: <a href="https://www.microsoft.com/ai/seeing-ai">Seeing AI (microsoft.com/ai/seeing-ai)</a> · <a href="https://www.apple.com/accessibility/">Apple Magnifier (apple.com/accessibility)</a> · <a href="https://gemini.google/overview/gemini-live/">Gemini Live (gemini.google/overview/gemini-live)</a></p>
+  <div class="notes-src">~40 sec. Meet Maria. She’s blind. She could live in Dublin, Lagos or Singapore. She’s not one real person — she’s a mix of the stories I come across in my work. Every morning, Maria points her phone at her medicine box. An app like Seeing AI or Gemini Live reads the label out loud. Then it reads her letters, the bus stop sign, the menu at lunch. Things she used to wait for someone else to help with, she now does on her own. [pause] For Maria, AI means independence.</div>
+</section>
+
+<!-- 3 Afternoon -->
+<section class="slide dark center" id="s3" aria-roledescription="slide" aria-label="Slide 3 of 8: The call">
+  <p class="eyebrow" style="color:var(--coral)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>3:00 PM</p>
+  <h2 class="oswald" style="font-size:120px;font-weight:500;line-height:1.1">“Mum, it’s me. I’m in trouble. I need money now.”</h2>
+  <p style="font-size:44px;line-height:1.35;max-width:1500px;color:var(--lilac)">It’s her son’s voice, cloned by AI. And the visual red flags are hard to catch by ear.</p>
+  <p class="oswald" style="font-size:80px;font-weight:600;line-height:1.1;color:var(--coral)">Same technology. Opposite outcome.</p>
+  <button class="play" type="button" id="playCall" aria-pressed="false" aria-describedby="callDesc">
+    <span class="dot" aria-hidden="true"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></span>
+    <span><span class="l1" id="playLabel">Play the call</span><span class="l2">AI-cloned voice · 4 sec</span></span>
+  </button>
+  <p class="sr" id="callDesc">Audio clip. An AI-cloned voice says: Mum, it’s me. I’m in trouble. I need money now.</p>
+  <audio id="callAudio" preload="auto" src="assets/cloned-voice-call.mp3"></audio>
+  <div class="notes-src">~48 sec. Then one afternoon, her phone rings. [Click “Play the call”. Let the 4-second clip finish.] [pause] That wasn’t her son. It was his voice, cloned by AI from a short video online. The red flags most of us rely on — a strange number, a fake photo, an odd link — are visual. They’re much harder to catch by ear. [pause] The same technology that gave Maria her freedom in the morning is turned against her in the afternoon. That’s the equity problem with AI. The help and the harm often land on the same people.</div>
+</section>
+
+<!-- 4 Pattern -->
+<section class="slide light" id="s4" aria-roledescription="slide" aria-label="Slide 4 of 8: It’s not just Maria" style="gap:32px;padding-bottom:160px">
+  <h2 class="oswald" style="font-size:80px;font-weight:600;line-height:1.1;text-transform:uppercase">It’s not just Maria</h2>
+  <table>
+    <caption class="sr">How AI helps and harms different groups</caption>
+    <thead><tr><th scope="col" style="width:16%">Who</th><th scope="col" style="width:42%">How AI helps</th><th scope="col" style="width:42%">How AI harms</th></tr></thead>
+    <tbody>
+      <tr><th scope="row" style="background:var(--card);color:var(--ink)">Race</th><td>Social media for civic action, especially for Black women</td><td>Systems that look neutral but repeat old racism</td></tr>
+      <tr><th scope="row" style="background:var(--card);color:var(--ink)">Gender</th><td>Better detection of deepfakes and intimate-image abuse</td><td>“Gender detection” that treats difference as an error</td></tr>
+      <tr><th scope="row" style="background:var(--card);color:var(--ink)">Youth</th><td>Saving endangered languages for future learners</td><td>Low-quality edtech that does students’ thinking</td></tr>
+      <tr><th scope="row" style="background:var(--card);color:var(--ink)">Global</th><td>Bringing societies together on big questions</td><td>Power piling up in a few companies</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:36px;line-height:1.35;text-align:center;color:var(--body)">The good never cancels out the bad.<br><b>Equal access isn’t equal outcomes. Equity is about outcomes.</b></p>
+  <p class="foot">Sources: <a href="https://doi.org/10.1108/ETPC-08-2023-0102">Tanksley 2024</a>; <a href="https://en.wikipedia.org/wiki/Race_After_Technology">Benjamin 2019</a>; Open Voice project; <a href="https://5rightsfoundation.com">5Rights Foundation</a> · Equity definition: <a href="https://crxlab.org">Antoinette Carroll, Creative Reaction Lab</a></p>
+  <div class="notes-src">~44 sec. And it’s not just Maria. It’s the same pattern everywhere. Social media helps Black women organise for civic action — while systems that look neutral quietly repeat old racism. Better tools catch deepfakes — while “gender detection” treats anyone outside the norm as an error. AI can save endangered languages for future learners — while low-quality edtech does students’ thinking for them. And globally, AI brings societies together — while power piles up in a few companies. [pause] The good never cancels out the bad. That’s why equal access isn’t enough. Equity is about equal outcomes.</div>
+</section>
+
+<!-- 5 Helps -->
+<section class="slide light" id="s5" aria-roledescription="slide" aria-label="Slide 5 of 8: So what helps?" style="gap:40px;padding-bottom:160px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <p class="eyebrow" style="font-size:28px;color:var(--rust)">Examples that already work</p>
+    <h2 class="oswald" style="font-size:80px;font-weight:600;line-height:1.1;text-transform:uppercase">So what helps?</h2>
+  </div>
+  <div class="grid">
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3 3h4v4l3 3-3 3v4h-4l-3 3-3-3H5v-4l-3-3 3-3V5h4z"/><path d="m8.5 12 2.5 2.5 5-5"/></svg>Accessible by default</h3><p>Build accessibility into shared design systems, so every team gets it for free.</p></div>
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>Shared, open tools</h3><p>Free, open-source accessibility checkers help any team catch barriers early.</p></div>
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5.5 2.4 5.5 5.8"/></svg>People in the room</h3><p>Disabled people test and co-design. In paired testing, a tester with a disability works with an abled tester.</p></div>
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Defences against scams</h3><p>Scam-blocking apps flag suspicious calls and texts. A family “safe word” beats a cloned voice.</p></div>
+  </div>
+  <p class="foot">AI &amp; Equity · W3C Equity Community Group</p>
+  <div class="notes-src">~55 sec. So what helps? Let me share what we do back home. First, accessible by default. At GovTech in Singapore, where I work, accessibility is built into our shared design system, so every team gets it for free. Second, shared, open tools. Free checkers help any team catch barriers early — at GovTech, we built one called Oobee. Third, people in the room. Disabled people test and co-design. We use paired testing: a tester with a disability works side by side with an abled tester. And for people like Maria, defences against scams. In Singapore, an app called ScamShield flags scam calls and texts. And one simple tip anyone can use: agree a family safe word. A cloned voice won’t know it.</div>
+</section>
+
+<!-- 6 Standards -->
+<section class="slide light" id="s6" aria-roledescription="slide" aria-label="Slide 6 of 8: What worked? Standards." style="justify-content:space-between;gap:48px;padding-bottom:160px">
+  <h2 class="oswald" style="font-size:96px;font-weight:600;line-height:1.1;text-transform:uppercase">What worked? Standards.</h2>
+  <ol class="flow" style="list-style:none" aria-label="From principles to everyday decisions">
+    <li class="box" style="background:var(--card);border:2px solid var(--rule)"><span class="t">Principles</span><span class="d" style="color:var(--muted)">Rights, fairness, inclusion</span></li>
+    <li aria-hidden="true" style="display:contents"><svg class="arrow" viewBox="0 0 96 48"><path d="M0 16h58V0l38 24-38 24V32H0z" fill="currentColor"/></svg></li>
+    <li class="box" style="background:var(--ink)"><span class="t" style="color:var(--coral)">Standards</span><span class="d" style="color:var(--lilac);font-weight:700">Shared, testable requirements</span></li>
+    <li aria-hidden="true" style="display:contents"><svg class="arrow" viewBox="0 0 96 48"><path d="M0 16h58V0l38 24-38 24V32H0z" fill="currentColor"/></svg></li>
+    <li class="box" style="background:var(--card);border:2px solid var(--rule)"><span class="t">Everyday decisions</span><span class="d" style="color:var(--muted)">What gets built on Monday</span></li>
+  </ol>
+  <p style="font-size:40px;line-height:1.35;color:var(--body)">WCAG did this for accessibility. <b>We can do it for equity too.</b></p>
+  <p class="foot">AI &amp; Equity · W3C Equity Community Group</p>
+  <div class="notes-src">~30 sec. Notice what made the difference. Not good intentions — standards. Principles like fairness only change things when they become clear, testable requirements that a team can act on, on a Monday morning. That’s what W3C does best. WCAG did it for accessibility. We can do it for equity too.</div>
+</section>
+
+<!-- 7 Wand -->
+<section class="slide peach center" id="s7" aria-roledescription="slide" aria-label="Slide 7 of 8: AI is not a silver bullet">
+  <p class="eyebrow" style="font-size:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>If we had a magic wand</p>
+  <h2 class="oswald big">AI is not a silver bullet.</h2>
+  <p style="font-size:48px;line-height:1.3;max-width:1400px">Sometimes equity means knowing when <b>not</b> to use AI, and letting other solutions shine.</p>
+  <div class="notes-src">~20 sec. And if we had one magic wand? We’d remind everyone that AI is not a silver bullet. Sometimes the most equitable choice is to not use AI at all — and let a person, or a simpler solution, do the job.</div>
+</section>
+
+<!-- 8 Join -->
+<section class="slide dark" id="s8" aria-roledescription="slide" aria-label="Slide 8 of 8: Join the W3C Equity Community Group" style="flex-direction:row;align-items:center;gap:64px">
+  <div style="flex:1;display:flex;flex-direction:column;gap:28px">
+    <p class="eyebrow" style="font-size:28px;color:var(--coral)">Our ask</p>
+    <h2 class="oswald" style="font-size:96px;font-weight:600;line-height:1.1;text-transform:uppercase">Join the W3C Equity Community Group</h2>
+    <p style="font-size:36px;font-weight:700;line-height:1.3">Help us build the Equity Maturity Model</p>
+    <ul style="font-size:32px;line-height:1.5;color:var(--lilac);padding-left:40px">
+      <li>Test it against real specs</li>
+      <li>Share a case study from your work</li>
+      <li>Join a call: every 2 weeks, on Mondays</li>
+    </ul>
+    <p style="font-size:40px;font-weight:700;color:var(--coral)"><a href="https://www.w3.org/community/equity/">w3.org/community/equity</a></p>
+    <p style="font-size:32px;line-height:1.4"><i>Who’s the Maria in your work? Bring their story.</i></p>
+  </div>
+  <div class="qr">
+    <img src="assets/qr-equity-cg.png" alt="QR code linking to the W3C Equity Community Group page">
+    <p>Scan to join, or visit:</p>
+    <p><a href="https://www.w3.org/community/equity/">w3.org/community/equity</a></p>
+  </div>
+  <div class="notes-src">~45 sec. So here’s our ask. Join the W3C Equity Community Group. You don’t need to be a W3C Member — just a free W3C account. We’re building an Equity Maturity Model: a way for groups and teams to check how equitable their work is, and get better at it. We need your help. Test it against real specs. Share a case study from your work. Or join a call — we meet every two weeks, on Mondays. [pause] Think back to Maria. Who’s the Maria in your work? Bring their story to us. Scan the code, or go to w3.org slash community slash equity. Thank you!</div>
+</section>
+
+</div>
+</main>
+
+<nav id="bar" aria-label="Slide controls">
+  <button type="button" id="prev" aria-label="Previous slide">‹</button>
+  <span id="count" aria-hidden="true">1 / 8</span>
+  <button type="button" id="next" aria-label="Next slide">›</button>
+  <button type="button" id="notesBtn" aria-pressed="false" aria-controls="notes">Notes (N)</button>
+  <button type="button" id="fsBtn">Full screen (F)</button>
+</nav>
+<section id="notes" hidden aria-label="Speaker notes"><h2>Speaker notes</h2><p id="notesText"></p></section>
+<p class="sr" aria-live="polite" id="live"></p>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var stage=document.getElementById('stage');
+  var i=0;
+  function fit(){
+    var s=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+    stage.style.transform='scale('+s+')';
+  }
+  function show(n,announce){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(el,k){
+      var on=k===i; el.classList.toggle('is-current',on);
+      el.setAttribute('aria-hidden',on?'false':'true');
+      if(on){el.removeAttribute('inert')}else{el.setAttribute('inert','')}
+    });
+    document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+    var src=slides[i].querySelector('.notes-src');
+    document.getElementById('notesText').textContent=src?src.textContent:'';
+    if(announce){document.getElementById('live').textContent=slides[i].getAttribute('aria-label')}
+    try{history.replaceState(null,'','#'+(i+1))}catch(e){}
+    stopCall();
+  }
+  var audio=document.getElementById('callAudio'),btn=document.getElementById('playCall');
+  var icon=document.getElementById('playIcon'),label=document.getElementById('playLabel');
+  function setPlaying(p){btn.setAttribute('aria-pressed',p?'true':'false');label.textContent=p?'Pause the call':'Play the call';
+    icon.innerHTML=p?'<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>':'<path d="M7 4v16l13-8z"/>'}
+  function stopCall(){if(!audio.paused){audio.pause()}audio.currentTime=0;setPlaying(false)}
+  btn.addEventListener('click',function(e){e.stopPropagation();if(audio.paused){audio.play();setPlaying(true)}else{audio.pause();setPlaying(false)}});
+  audio.addEventListener('ended',function(){audio.currentTime=0;setPlaying(false)});
+  function toggleNotes(){var n=document.getElementById('notes');n.hidden=!n.hidden;document.getElementById('notesBtn').setAttribute('aria-pressed',n.hidden?'false':'true')}
+  function fs(){if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}else{document.exitFullscreen()}}
+  document.getElementById('prev').onclick=function(){show(i-1,true)};
+  document.getElementById('next').onclick=function(){show(i+1,true)};
+  document.getElementById('notesBtn').onclick=toggleNotes;
+  document.getElementById('fsBtn').onclick=fs;
+  document.addEventListener('keydown',function(e){
+    var t=e.target.tagName;
+    if(e.altKey||e.ctrlKey||e.metaKey)return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&t!=='BUTTON'&&t!=='A')){e.preventDefault();show(i+1,true)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1,true)}
+    else if(e.key==='Home'){show(0,true)}else if(e.key==='End'){show(slides.length-1,true)}
+    else if(e.key==='n'||e.key==='N'){toggleNotes()}else if(e.key==='f'||e.key==='F'){fs()}
+    else if((e.key==='p'||e.key==='P')&&i===2){btn.click()}
+  });
+  var bar=document.getElementById('bar'),idleT;
+  function wake(){bar.classList.remove('idle');clearTimeout(idleT);idleT=setTimeout(function(){bar.classList.add('idle')},2500)}
+  document.addEventListener('mousemove',wake);document.addEventListener('touchstart',wake);bar.addEventListener('focusin',wake);
+  wake();
+  window.addEventListener('resize',fit);
+  var start=parseInt((location.hash||'').slice(1),10);
+  fit();show(isNaN(start)?0:start-1,false);
+})();
+</script>
+</body>
+</html>
