@@ -66,7 +66,7 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
 .qr{background:var(--paper);color:var(--ink);border-radius:24px;padding:32px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:none}
 .qr img{width:360px;height:360px}
 .qr p{font-size:28px;font-weight:700}
-/* controls + notes */
+/* controls */
 #bar{transition:opacity .3s}
 #bar.idle:not(:focus-within){opacity:0;pointer-events:none}
 #bar{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:rgba(14,13,23,.92);color:var(--paper);padding:8px 10px;border-radius:999px;font-size:16px;z-index:5}
@@ -74,11 +74,7 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
 #bar button:hover{background:#2A2742}
 #bar button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
 #count{min-width:72px;text-align:center;font-variant-numeric:tabular-nums}
-#notes{position:fixed;left:16px;right:16px;bottom:76px;max-height:38vh;overflow:auto;background:var(--paper);color:var(--ink);border-radius:12px;padding:20px 24px;font-size:20px;line-height:1.5;box-shadow:0 8px 30px rgba(0,0,0,.5);z-index:6}
-#notes[hidden]{display:none}
-#notes h2{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.notes-src{display:none}
 @media (prefers-reduced-motion: no-preference){.slide.is-current{animation:fade .35s ease}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @media print{
@@ -86,7 +82,7 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   #viewport{position:static;display:block}
   #stage{transform:none!important;width:auto;height:auto}
   .slide{display:flex!important;position:relative;width:1920px;height:1080px;page-break-after:always;zoom:.5}
-  #bar,#notes,.skip{display:none!important}
+  #bar,.skip{display:none!important}
 }
 </style>
 </head>
@@ -107,7 +103,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
     <p style="font-size:32px;font-weight:700">Jessie Hoong</p>
     <p style="font-size:28px;color:var(--lilac2)">GovTech Singapore · On behalf of the W3C Equity Community Group</p>
   </div>
-  <div class="notes-src">~15 sec. Hi everyone, I’m Jessie. I’m here on behalf of the W3C Equity Community Group. By day, I work on accessibility at GovTech, Singapore’s government technology agency. Let me start with a story.</div>
 </section>
 
 <!-- 2 Morning -->
@@ -117,7 +112,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   <p class="lede" style="color:var(--body)">She’s blind. She points her phone at her medicine box, and AI reads the label out loud.</p>
   <p class="oswald" style="font-size:72px;font-weight:600;line-height:1.1;color:var(--blue)">For her, AI means independence.</p>
   <p class="foot">Maria is a composite character · Apps that do this today: <a href="https://www.microsoft.com/ai/seeing-ai">Seeing AI (microsoft.com/ai/seeing-ai)</a> · <a href="https://www.apple.com/accessibility/">Apple Magnifier (apple.com/accessibility)</a> · <a href="https://gemini.google/overview/gemini-live/">Gemini Live (gemini.google/overview/gemini-live)</a></p>
-  <div class="notes-src">~40 sec. Meet Maria. She’s blind. She could live in Dublin, Lagos or Singapore. She’s not one real person — she’s a mix of the stories I come across in my work. Every morning, Maria points her phone at her medicine box. An app like Seeing AI or Gemini Live reads the label out loud. Then it reads her letters, the bus stop sign, the menu at lunch. Things she used to wait for someone else to help with, she now does on her own. [pause] For Maria, AI means independence.</div>
 </section>
 
 <!-- 3 Afternoon -->
@@ -132,7 +126,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   </button>
   <p class="sr" id="callDesc">Audio clip. An AI-cloned voice says: Mum, it’s me. I’m in trouble. I need money now.</p>
   <audio id="callAudio" preload="auto" src="assets/cloned-voice-call.mp3"></audio>
-  <div class="notes-src">~48 sec. Then one afternoon, her phone rings. [Click “Play the call”. Let the 4-second clip finish.] [pause] That wasn’t her son. It was his voice, cloned by AI from a short video online. The red flags most of us rely on — a strange number, a fake photo, an odd link — are visual. They’re much harder to catch by ear. [pause] The same technology that gave Maria her freedom in the morning is turned against her in the afternoon. That’s the equity problem with AI. The help and the harm often land on the same people.</div>
 </section>
 
 <!-- 4 Pattern -->
@@ -150,7 +143,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   </table>
   <p style="font-size:36px;line-height:1.35;text-align:center;color:var(--body)">The good never cancels out the bad.<br><b>Equal access isn’t equal outcomes. Equity is about outcomes.</b></p>
   <p class="foot">Sources: <a href="https://doi.org/10.1108/ETPC-08-2023-0102">Tanksley 2024</a>; <a href="https://en.wikipedia.org/wiki/Race_After_Technology">Benjamin 2019</a>; Open Voice project; <a href="https://5rightsfoundation.com">5Rights Foundation</a> · Equity definition: <a href="https://crxlab.org">Antoinette Carroll, Creative Reaction Lab</a></p>
-  <div class="notes-src">~44 sec. And it’s not just Maria. It’s the same pattern everywhere. Social media helps Black women organise for civic action — while systems that look neutral quietly repeat old racism. Better tools catch deepfakes — while “gender detection” treats anyone outside the norm as an error. AI can save endangered languages for future learners — while low-quality edtech does students’ thinking for them. And globally, AI brings societies together — while power piles up in a few companies. [pause] The good never cancels out the bad. That’s why equal access isn’t enough. Equity is about equal outcomes.</div>
 </section>
 
 <!-- 5 Helps -->
@@ -166,7 +158,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
     <div class="card"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Defences against scams</h3><p>Scam-blocking apps flag suspicious calls and texts. A family “safe word” beats a cloned voice.</p></div>
   </div>
   <p class="foot">AI &amp; Equity · W3C Equity Community Group</p>
-  <div class="notes-src">~55 sec. So what helps? Let me share what we do back home. First, accessible by default. At GovTech in Singapore, where I work, accessibility is built into our shared design system, so every team gets it for free. Second, shared, open tools. Free checkers help any team catch barriers early — at GovTech, we built one called Oobee. Third, people in the room. Disabled people test and co-design. We use paired testing: a tester with a disability works side by side with an abled tester. And for people like Maria, defences against scams. In Singapore, an app called ScamShield flags scam calls and texts. And one simple tip anyone can use: agree a family safe word. A cloned voice won’t know it.</div>
 </section>
 
 <!-- 6 Standards -->
@@ -181,7 +172,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   </ol>
   <p style="font-size:40px;line-height:1.35;color:var(--body)">WCAG did this for accessibility. <b>We can do it for equity too.</b></p>
   <p class="foot">AI &amp; Equity · W3C Equity Community Group</p>
-  <div class="notes-src">~30 sec. Notice what made the difference. Not good intentions — standards. Principles like fairness only change things when they become clear, testable requirements that a team can act on, on a Monday morning. That’s what W3C does best. WCAG did it for accessibility. We can do it for equity too.</div>
 </section>
 
 <!-- 7 Wand -->
@@ -189,7 +179,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   <p class="eyebrow" style="font-size:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/></svg>If we had a magic wand</p>
   <h2 class="oswald big">AI is not a silver bullet.</h2>
   <p style="font-size:48px;line-height:1.3;max-width:1400px">Sometimes equity means knowing when <b>not</b> to use AI, and letting other solutions shine.</p>
-  <div class="notes-src">~20 sec. And if we had one magic wand? We’d remind everyone that AI is not a silver bullet. Sometimes the most equitable choice is to not use AI at all — and let a person, or a simpler solution, do the job.</div>
 </section>
 
 <!-- 8 Join -->
@@ -210,7 +199,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
     <p>Scan to join, or visit:</p>
     <p><a href="https://www.w3.org/community/equity/">w3.org/community/equity</a></p>
   </div>
-  <div class="notes-src">~45 sec. So here’s our ask. Join the W3C Equity Community Group. You don’t need to be a W3C Member — just a free W3C account. We’re building an Equity Maturity Model: a way for groups and teams to check how equitable their work is, and get better at it. We need your help. Test it against real specs. And come along: we meet every other Monday. [pause] Think back to Maria. Who’s the Maria in your work? Bring their story to us. Scan the code, or go to w3.org slash community slash equity. Thank you!</div>
 </section>
 
 </div>
@@ -220,10 +208,8 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   <button type="button" id="prev" aria-label="Previous slide">‹</button>
   <span id="count" aria-hidden="true">1 / 8</span>
   <button type="button" id="next" aria-label="Next slide">›</button>
-  <button type="button" id="notesBtn" aria-pressed="false" aria-controls="notes">Notes (N)</button>
   <button type="button" id="fsBtn">Full screen (F)</button>
 </nav>
-<section id="notes" hidden aria-label="Speaker notes"><h2>Speaker notes</h2><p id="notesText"></p></section>
 <p class="sr" aria-live="polite" id="live"></p>
 
 <script>
@@ -243,8 +229,6 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
       if(on){el.removeAttribute('inert')}else{el.setAttribute('inert','')}
     });
     document.getElementById('count').textContent=(i+1)+' / '+slides.length;
-    var src=slides[i].querySelector('.notes-src');
-    document.getElementById('notesText').textContent=src?src.textContent:'';
     if(announce){document.getElementById('live').textContent=slides[i].getAttribute('aria-label')}
     try{history.replaceState(null,'','#'+(i+1))}catch(e){}
     stopCall();
@@ -256,11 +240,9 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
   function stopCall(){if(!audio.paused){audio.pause()}audio.currentTime=0;setPlaying(false)}
   btn.addEventListener('click',function(e){e.stopPropagation();if(audio.paused){audio.play();setPlaying(true)}else{audio.pause();setPlaying(false)}});
   audio.addEventListener('ended',function(){audio.currentTime=0;setPlaying(false)});
-  function toggleNotes(){var n=document.getElementById('notes');n.hidden=!n.hidden;document.getElementById('notesBtn').setAttribute('aria-pressed',n.hidden?'false':'true')}
   function fs(){if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}else{document.exitFullscreen()}}
   document.getElementById('prev').onclick=function(){show(i-1,true)};
   document.getElementById('next').onclick=function(){show(i+1,true)};
-  document.getElementById('notesBtn').onclick=toggleNotes;
   document.getElementById('fsBtn').onclick=fs;
   document.addEventListener('keydown',function(e){
     var t=e.target.tagName;
@@ -268,7 +250,7 @@ th{background:var(--ink);color:var(--paper);font-weight:700}
     if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&t!=='BUTTON'&&t!=='A')){e.preventDefault();show(i+1,true)}
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1,true)}
     else if(e.key==='Home'){show(0,true)}else if(e.key==='End'){show(slides.length-1,true)}
-    else if(e.key==='n'||e.key==='N'){toggleNotes()}else if(e.key==='f'||e.key==='F'){fs()}
+    else if(e.key==='f'||e.key==='F'){fs()}
     else if((e.key==='p'||e.key==='P')&&i===2){btn.click()}
   });
   var bar=document.getElementById('bar'),idleT;

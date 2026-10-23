@@ -11,7 +11,6 @@ A 5-minute talk for the W3C TPAC 2026 AI & Society mini-workshop, given by Jessi
 | Right arrow, Space, Page Down | Next slide |
 | Left arrow, Page Up | Previous slide |
 | Home / End | First / last slide |
-| N | Show or hide speaker notes |
 | F | Full screen |
 | P (on slide 3) | Play or pause the audio clip |
 
